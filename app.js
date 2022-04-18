@@ -1,5 +1,4 @@
 require("dotenv/config");
-const { clear } = require("console");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5001;
