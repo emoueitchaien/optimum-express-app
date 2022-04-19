@@ -1,7 +1,6 @@
-//Importing Schema
-const user = require("../models/userModel");
+import user from "../models/userModel.js";
 
-module.exports = {
+const userController = {
   getUsers: (req, res) => {
     user
       .find()
@@ -60,3 +59,5 @@ module.exports = {
       .catch((err) => res.status(400).json("Error:" + err));
   },
 };
+
+export default userController;

@@ -1,8 +1,7 @@
-var express = require("express");
+import express from "express";
 var router = express.Router();
 
-//require controller modules
-var userController = require("../controllers/userController");
+import userController from "../controllers/userController.js";
 
 router.route("/").get(userController.getUsers).post(userController.addUser);
 
@@ -12,4 +11,4 @@ router
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 
-module.exports = router;
+export default router;
