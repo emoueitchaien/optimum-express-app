@@ -12,6 +12,7 @@ module.exports = {
   addUser: (req, res) => {
     const newUser = new user({
       Name: req.body.Name,
+      Email: req.body.Email,
       Address: req.body.Address,
       Contact: Number(req.body.Contact),
     });
@@ -40,6 +41,7 @@ module.exports = {
       .findById(req.params.id)
       .then((user) => {
         user.Name = req.body.Name;
+        user.Email = req.body.Email;
         user.Address = req.body.Address;
         user.Contact = Number(req.body.Contact);
 
