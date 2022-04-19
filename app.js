@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 const app = express();
 const PORT = process.env.PORT || 5001;
 import user from "./routes/userRoute.js";
 import mongoose from "mongoose";
-
-dotenv.config();
 
 //Body Parser
 app.use(express.json());

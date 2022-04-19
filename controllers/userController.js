@@ -4,7 +4,7 @@ const userController = {
   getUsers: (req, res) => {
     user
       .find()
-      .then((user) => res.json(user))
+      .then((user) => res.json({ data: user, status: 200 }))
       .catch((err) => res.status(400).json("Error:" + err));
   },
 
