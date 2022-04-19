@@ -2,7 +2,7 @@ require("dotenv/config");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5001;
-const user = require("./routes/usersRoutes");
+const user = require("./routes/userRoute");
 const mongoose = require("mongoose");
 
 //Body Parser
