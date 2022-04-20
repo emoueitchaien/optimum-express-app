@@ -37,7 +37,7 @@ const memberController = {
         memberAdded: memberAdded,
       });
     } catch (err) {
-      res.status(400).json({ "Erroeeer:": err.code });
+      res.status(400).json({ Error: err.message });
     }
   },
 
