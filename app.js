@@ -5,7 +5,7 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 5001;
 import user from "./routes/userRoute.js";
-import members from "./models/memberModel.js";
+import members from "./routes/authRoute.js";
 import mongoose from "mongoose";
 
 //Body Parser
