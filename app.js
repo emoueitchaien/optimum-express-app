@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import requireLogin from "./middlewares/requireLogin.js";
+
 import express from "express";
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -27,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Hello, Optimum Futurists!!!");
 });
 
-app.use("/user", user);
+app.use("/user", requireLogin, user);
 app.use("/members", members);
 
 app.listen(PORT, () => {
