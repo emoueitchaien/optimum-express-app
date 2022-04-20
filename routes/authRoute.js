@@ -3,7 +3,7 @@ var router = express.Router();
 
 import authController from "../controllers/authController.js";
 
-router.route("/").get(authController.greetMember);
+router.route("/").get(authController.getMember);
 
 router.route("/signup").post(authController.signupMember);
 
