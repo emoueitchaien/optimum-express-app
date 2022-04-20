@@ -4,7 +4,7 @@ const userController = {
   getUsers: async (req, res) => {
     try {
       const userRes = await user.find();
-      res.status(200).json({ data: userRes, status: 200 });
+      res.status(200).json({ "All Users": userRes, status: 200 });
     } catch (err) {
       res.status(400).json({ "Error:": err });
     }
@@ -21,7 +21,11 @@ const userController = {
       const userAdded = await newUser.save();
       res.status(200).json({ "User Added": userAdded });
     } catch (err) {
-      res.status(400).json({ "Error:": err });
+      if (err.code === 11000) {
+        res.status(400).json({ Error: "User with the email already exists!" });
+      } else {
+        res.status(400).json({ "Error:": err });
+      }
     }
   },
 
