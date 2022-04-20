@@ -5,6 +5,7 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 5001;
 import user from "./routes/userRoute.js";
+import members from "./routes/authRoute.js";
 import mongoose from "mongoose";
 
 //Body Parser
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", user);
+app.use("/members", members);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
