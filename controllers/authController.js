@@ -1,5 +1,9 @@
 import members from "../models/memberModel.js";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
+import jsonwebtoken from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+const jwtSecretKey = process.env.jwtSecretKey;
 
 const memberController = {
   getMember: async (req, res) => {
@@ -54,9 +58,8 @@ const memberController = {
       const match = await bcrypt.compare(pass, savedMember.pass);
 
       if (match) {
-        //   const token = jwt.sign({ _id: savedMember._id }, jwtSecret);
-        //   res.json({ token });
-        res.status(200).json({ message: "Login Successful!!" });
+        const token = jsonwebtoken.sign({ _id: savedMember._id }, jwtSecretKey);
+        res.status(200).json({ message: "Login Successful!!", token });
       } else {
         res.status(422).json({ error: "Incorrect Details!" });
       }
