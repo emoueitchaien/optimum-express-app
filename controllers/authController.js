@@ -67,6 +67,10 @@ const memberController = {
       res.status(400).json({ Error: err });
     }
   },
+
+  accessProtected: async (req, res) => {
+    res.send("You are allowed to access this resource!");
+  },
 };
 
 export default memberController;
