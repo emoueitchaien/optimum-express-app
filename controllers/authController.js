@@ -17,7 +17,7 @@ const memberController = {
 
   signupMember: async (req, res) => {
     try {
-      const { name, email, pass } = req.body;
+      const { name, email, pass, isAdmin } = req.body;
       if (!name || !email || !pass) {
         res.status(400).json({ error: "Please fill up all input fields" });
         return;
@@ -34,6 +34,7 @@ const memberController = {
         name,
         email,
         pass: hashedpass,
+        isAdmin,
       });
       const memberAdded = await newMember.save();
       res.json({
@@ -58,7 +59,10 @@ const memberController = {
       const match = await bcrypt.compare(pass, savedMember.pass);
 
       if (match) {
-        const token = jsonwebtoken.sign({ _id: savedMember._id }, jwtSecretKey);
+        const token = jsonwebtoken.sign(
+          { _id: savedMember._id, isAdmin: savedMember.isAdmin },
+          jwtSecretKey
+        );
         res.status(200).json({ message: "Login Successful!!", token });
       } else {
         res.status(422).json({ error: "Incorrect Details!" });

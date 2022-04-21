@@ -15,9 +15,12 @@ const requireLogin = (req, res, next) => {
       return res.status(401).json({ error: "Please login first" });
     }
 
-    const { _id } = payload;
+    const { _id, isAdmin } = payload;
     members.findById(_id).then((memberData) => {
       req.member = memberData;
+      if (!isAdmin) {
+        return res.status(404).json({ error: "Access Denied" });
+      }
       next();
     });
   });
