@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Hello, Optimum Futurists!!!");
 });
 
-app.use("/user", requireLogin, user);
+app.use("/user", user);
 app.use("/members", members);
 
 app.listen(PORT, () => {
