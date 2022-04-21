@@ -1,10 +1,10 @@
 import express from "express";
-// import requireLogin from "../middlewares/requireLogin.js";
+import mail from "../middlewares/mailHandler.js";
 
 let router = express.Router();
 
 import mailController from "../controllers/mailController.js";
 
-router.route("/").post(mailController.sendMail);
+router.route("/").post(mail, mailController.sendMail);
 
 export default router;
