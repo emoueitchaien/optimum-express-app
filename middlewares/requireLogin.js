@@ -16,11 +16,14 @@ const requireLogin = (req, res, next) => {
     }
 
     const { _id, isAdmin } = payload;
+
+    if (!isAdmin) {
+      return res.status(403).json({ error: "Access Denied" });
+    }
+
     members.findById(_id).then((memberData) => {
       req.member = memberData;
-      if (!isAdmin) {
-        return res.status(404).json({ error: "Access Denied" });
-      }
+
       next();
     });
   });
