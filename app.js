@@ -1,15 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import requireLogin from "./middlewares/requireLogin.js";
-
 import express from "express";
 const app = express();
 import mongoose from "mongoose";
 const PORT = process.env.PORT || 5001;
-import user from "./routes/userRoute.js";
-import members from "./routes/authRoute.js";
-import contact from "./routes/mailRoute.js";
+import user from "./src/routes/userRoute.js";
+
+import members from "./src/routes/authRoute.js";
+import contact from "./src/routes/mailRoute.js";
 
 //Body Parser
 app.use(express.json());
