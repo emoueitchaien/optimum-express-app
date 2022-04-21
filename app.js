@@ -5,10 +5,11 @@ import requireLogin from "./middlewares/requireLogin.js";
 
 import express from "express";
 const app = express();
+import mongoose from "mongoose";
 const PORT = process.env.PORT || 5001;
 import user from "./routes/userRoute.js";
 import members from "./routes/authRoute.js";
-import mongoose from "mongoose";
+import contact from "./routes/mailRoute.js";
 
 //Body Parser
 app.use(express.json());
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", user);
 app.use("/members", members);
+app.use("/contact", contact);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
