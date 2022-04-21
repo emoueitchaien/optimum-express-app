@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-let gmailpass = process.env.gmailpass;
 
 const mail = (req, res, next) => {
   var transporter = nodemailer.createTransport({
@@ -7,17 +6,17 @@ const mail = (req, res, next) => {
     // service: "gmail",
 
     //Using Mail Trap
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: process.env.mailHost,
+    port: process.env.mailPort,
     auth: {
-      user: "da03a1b1aa772c",
-      pass: "28ad684513b9bb",
+      user: process.env.mailUserAndFrom,
+      pass: process.env.mailPass,
     },
   });
 
   var mailOptions = {
-    from: "da03a1b1aa772c",
-    to: "nezukoyaiba28@gmail.com",
+    from: process.env.mailUserAndFrom,
+    to: process.env.mailTo,
     subject: req.body.Name,
     text: req.body.Message,
   };
@@ -27,6 +26,7 @@ const mail = (req, res, next) => {
       console.log(error);
     } else {
       console.log("Email sent: " + info.response);
+      req.info = info;
     }
   });
   next();
