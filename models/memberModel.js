@@ -14,6 +14,7 @@ const memberSchema = new Schema(
       ],
     },
     pass: { type: String, required: true },
+    isAdmin: { type: Boolean, default: false },
   },
   {
     timestamps: true,
