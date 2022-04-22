@@ -9,9 +9,7 @@ const mailController = {
     });
     try {
       const mailAdded = await newMail.save();
-      res
-        .status(200)
-        .json({ "Mail Added": mailAdded, "Mail Sent": req.info.response });
+      res.status(200).json({ "Mail Added": mailAdded });
     } catch (err) {
       res.status(400).json({ "Error:": err });
     }
