@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import cors from "cors";
 import express from "express";
 const app = express();
 import mongoose from "mongoose";
@@ -13,6 +14,13 @@ import project from "./src/routes/projectRoute.js";
 
 //Body Parser
 app.use(express.json());
+
+//CORS
+const corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 //MangoDB connection
 const uri = process.env.ATLAS_URI;
