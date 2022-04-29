@@ -2,20 +2,16 @@ import nodemailer from "nodemailer";
 
 const mail = (req, res, next) => {
   var transporter = nodemailer.createTransport({
-    //Using Gmail
-    // service: "gmail",
+    service: "gmail",
 
-    //Using Mail Trap
-    host: process.env.mailHost,
-    port: process.env.mailPort,
     auth: {
-      user: process.env.mailUser,
+      user: process.env.mailId,
       pass: process.env.mailPass,
     },
   });
 
   var mailOptions = {
-    from: "no-reply@gmail.com",
+    from: req.body.Email,
     to: process.env.mailTo,
     subject: req.body.Name,
     text: req.body.Message,
