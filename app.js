@@ -12,17 +12,14 @@ import members from "./src/routes/authRoute.js";
 import contact from "./src/routes/mailRoute.js";
 import project from "./src/routes/projectRoute.js";
 
-//Body Parser
 app.use(express.json());
 
-//CORS
 const corsOptions = {
-  origin: "*",
+  origin: process.env.corsOrigin,
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
-//MangoDB connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
