@@ -7,6 +7,7 @@ const userSchema = new Schema(
     Email: { type: String, required: true, unique: true },
     Address: { type: String, required: true },
     Contact: { type: Number, required: true },
+    isDelete: { type: Boolean, default: false },
   },
   {
     timestamps: true,
