@@ -1,5 +1,5 @@
 import express from "express";
-import mailHandler from "../middlewares/mailHandler.js";
+import mailHandler from "../helper/mailHandler.js";
 
 let router = express.Router();
 

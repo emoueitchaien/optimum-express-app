@@ -9,13 +9,13 @@ const mail = (req, res, next) => {
     host: process.env.mailHost,
     port: process.env.mailPort,
     auth: {
-      user: process.env.mailUserAndFrom,
+      user: process.env.mailUser,
       pass: process.env.mailPass,
     },
   });
 
   var mailOptions = {
-    from: process.env.mailUserAndFrom,
+    from: "no-reply@gmail.com",
     to: process.env.mailTo,
     subject: req.body.Name,
     text: req.body.Message,
