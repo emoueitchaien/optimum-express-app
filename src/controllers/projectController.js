@@ -3,7 +3,7 @@ const postController = {
   fetchProjects: async (req, res) => {
     try {
       const projects = await axios.get(
-        "https://api.github.com/users/emoueitchaien/repos"
+        "https://api.github.com/users/emoueitchaien/repos?per_page=9"
       );
 
       const projectDetails = projects.data.map((project) => ({
