@@ -14,10 +14,14 @@ Backend logics on controllers, models and routes
     nodemailer
 ```
 
-## Available Scripts
+## Project Initialization, Setup and Available Scripts
 
 In the project directory, you can run:
 
+### `yarn install`
+
+This installs all required dependecies for the project/
+
 ### `yarn start`
 
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000).
