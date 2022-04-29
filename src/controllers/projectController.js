@@ -2,9 +2,7 @@ import axios from "axios";
 const postController = {
   fetchProjects: async (req, res) => {
     try {
-      const projects = await axios.get(
-        "https://api.github.com/users/emoueitchaien/repos?per_page=9"
-      );
+      const projects = await axios.get(process.env.gitHubRepoUrl);
 
       const projectDetails = projects.data.map((project) => ({
         id: project.id,
@@ -15,7 +13,7 @@ const postController = {
 
       return res.json(projectDetails);
     } catch (err) {
-      res.status(400).json({ "Errorrr:": err });
+      res.status(400).json({ "Error:": err });
     }
   },
 };
