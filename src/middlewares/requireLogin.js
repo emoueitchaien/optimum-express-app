@@ -1,4 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 const jwtSecretKey = process.env.jwtSecretKey;
 import members from "../models/memberModel.js";
 
