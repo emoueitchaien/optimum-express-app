@@ -11,7 +11,7 @@ const memberController = {
       const allMembers = await members.find();
       res.status(200).json({ "All Members": allMembers });
     } catch (err) {
-      res.status(400).json({ "Erroeeer:": err.code });
+      res.status(400).json({ "Error:": err.code });
     }
   },
 
